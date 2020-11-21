@@ -1,0 +1,67 @@
+{
+  "name": "sp-overlays",
+  "version": "1.0.0",
+  "description": "WebGL-fueled stream overlays for OBS",
+  "main": "dist/index.js",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:server": "webpack --mode production --config ./webpack/webpack.build.server.js",
+    "build:app": "webpack --mode production --config ./webpack/webpack.build.app.js",
+    "build": "npm run build:types && npm run build:js",
+    "start": "node dist/server/server.js",
+    "startdev": "webpack serve --mode development --config ./webpack/webpack.config.dev.js",
+    "test": "echo \"Hi there\" && exit 1"
+  },
+  "author": "John DeMey",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@babel/runtime": "^7.12.5",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.11.1",
+    "concurrently": "^5.3.0",
+    "css-loader": "^5.0.0",
+    "eslint": "^7.13.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "nodemon": "^2.0.6",
+    "postcss-loader": "^4.0.4",
+    "prop-types": "^15.7.2",
+    "react-spring": "^8.0.27",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "chrome": "58",
+            "ie": "11"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "babel-plugin-styled-components"
+    ]
+  },
+  "browserslist": "> 0.25%, not dead"
+}
