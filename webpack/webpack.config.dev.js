@@ -1,23 +1,23 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+const getWdsConfig = (entryPath, outputFile, apiFallback) => ({
   mode: 'development',
   entry: [
-    path.join(process.cwd(), 'src/app', 'perspectives.jsx')
+    entryPath
   ],
   target: 'web',
   output: {
     path: path.join(process.cwd(), 'dist'),
     publicPath: '/', 
-    filename: 'perspectives.js'
+    filename: outputFile 
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.css']
   },
   devServer: {
     historyApiFallback: {
-      index: 'src/app/perspectives.html'
+      index: apiFallback 
     },
     open: true,
     port: 8000
@@ -58,4 +58,6 @@ module.exports = {
       }
     ]
   }
-};
+});
+
+module.exports = getWdsConfig;

@@ -29,7 +29,7 @@ const Span = styled(animated.span)`
 const SlidingSubheader = props => {
   const [springs, set] = useSprings(props.text.length, () => ({
     opacity: 0,
-    x: -450,
+    x: 450,
     y: between(-100, 100),
     config: {
       mass: 1,

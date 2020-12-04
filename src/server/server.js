@@ -31,10 +31,7 @@ app.use((req, res, next) => {
 //Render errors
 app.use((err, req, res, next) => {
   res.status(500);
-  if(req.accepts('html')) {
-    res.type('text/html').sendFile(path.join(process.cwd(), `${filePrefix}/errorpage.html`));
-    return;
-  }
+  console.error(err);
   if(req.accepts('json')) {
     res.type('application/json').send({
       error: '500 Internal Server Error',

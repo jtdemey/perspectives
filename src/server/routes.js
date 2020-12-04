@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 
 const router = express.Router();
-const prefix = process.env.NODE_ENV === 'production' ? 'src/app' : 'dist/public';
+const prefix = process.env.NODE_ENV === 'development' ? 'src/app' : 'dist/public';
 
 router.route('/')
   .get((req, res) => {
