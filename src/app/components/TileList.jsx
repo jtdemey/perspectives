@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const List = styled(animated.ul)`
   width: 100%;
-  margin-top: 6rem;
   text-align: center;
   align-items: center;
 `;
@@ -43,12 +42,10 @@ const TileList = props => {
         <ListItem key={i} style={{
           opacity: opacity,
           transform: y.interpolate(y => `translate(0, ${y}px)`)
-        }}>
-          <a href={props.items[i].href}>
-            <LiText>
-              {props.items[i].text}
-            </LiText>
-          </a>
+        }} onClick={() => props.clickFunc(props.items[i].href)}>
+          <LiText>
+            {props.items[i].text}
+          </LiText>
         </ListItem>
       ))}
     </List>
@@ -56,6 +53,7 @@ const TileList = props => {
 };
 
 TileList.propTypes = {
+  clickFunc: PropTypes.func,
   items: PropTypes.array
 };
 

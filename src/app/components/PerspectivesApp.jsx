@@ -2,24 +2,18 @@ import * as React from 'react';
 import CascadingHeader from './CascadingHeader';
 import CssBase from './CssBase';
 import SlidingSubheader from './SlidingSubheader';
-import TileList from './TileList';
+import PerspectivesBody from './PerspectivesBody';
 
-const genLi = (href, text) => ({ href, text });
-const listItems = [
-  genLi('/towers', 'Towers'),
-  genLi('/towers', 'Lions'),
-  genLi('/towers', 'Tigers'),
-  genLi('/towers', 'Bears'),
-  genLi('/towers', 'Oh My')
-];
-
-const PerspectivesApp = () => (
-  <main>
-    <CssBase />
-    <CascadingHeader text="Perspectives" />
-    <SlidingSubheader text="by JD" />
-    <TileList items={listItems} />
-  </main>
-);
+const PerspectivesApp = () => {
+  const [formVisible, setFormVisible] = React.useState(false);
+  return (
+    <main>
+      <CssBase />
+      <CascadingHeader text="Perspectives" />
+      <SlidingSubheader text="by JD" />
+      <PerspectivesBody formVisible={formVisible} setFormVisible={setFormVisible} />
+    </main>
+  );
+};
 
 export default PerspectivesApp;

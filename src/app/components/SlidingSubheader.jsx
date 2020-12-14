@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { animated, interpolate, useSprings } from 'react-spring';
-import { between } from '../utils';
 import styled from 'styled-components';
+import { between } from '../utils';
 
 const SubHeader = styled(animated.h2)`
   margin: 1rem;

@@ -41,7 +41,7 @@ table {
 	border-spacing: 0;
 }
 
-html, body, #site-wrapper {
+html, body, canvas, #site-wrapper {
   width: 100%;
   height: 100%;
 }
