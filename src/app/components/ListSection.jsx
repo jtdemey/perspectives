@@ -26,8 +26,8 @@ const ArticleHeader = styled(animated.span)`
 
 const Article = styled(animated.article)`
   padding: 1rem 2rem;
-  border: 4px #ACB0BD solid;
-  border-radius: 1rem;
+  border: 2px #ACB0BD solid;
+  border-radius: 0.5rem;
 `;
 
 const ListSection = props => {
@@ -40,7 +40,7 @@ const ListSection = props => {
       friction: i * 20 + 40
     }
   }));
-  set(() => ({ delay: 1000, opacity: 1, rotation: 0 }));
+  set(i => props.isFading ? ({ opacity: 0, rotation: 50 - i * 8 }) : ({ delay: 1000, opacity: 1, rotation: 0 }));
   return (
     <Section>
       {springs.map(({ opacity, rotation }, i) => (
@@ -57,6 +57,7 @@ const ListSection = props => {
 };
 
 ListSection.propTypes = {
+  isFading: PropTypes.bool,
   text: PropTypes.string
 };
 

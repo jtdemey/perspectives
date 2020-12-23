@@ -27,12 +27,13 @@ const CascadingHeader = props => {
     opacity: 0,
     translation: between(-150, 150),
     config: {
-      mass: between(1, 3),
+      mass: between(2, 3),
       tension: between(50, 80),
-      friction: between(30, 100) 
+      friction: between(30, 80) 
     }
   }));
-  set(() => ({ delay: 250, opacity: 1, translation: 0 }));
+  set(() => (props.isFading ? { config: { duration: 100 }, opacity: 0, translation: 20 }
+    : { delay: 250, opacity: 1, translation: 0 }));
   const chars = props.text.split('');
   return (
     <Header>
@@ -47,6 +48,7 @@ const CascadingHeader = props => {
 };
 
 CascadingHeader.propTypes = {
+  isFading: PropTypes.bool,
   text: PropTypes.string
 };
 

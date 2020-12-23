@@ -37,7 +37,7 @@ const SlidingSubheader = props => {
       friction: between(150, 300) 
     }
   }));
-  set(i => ({ delay: (i * 200) + 600, opacity: 1, x: 0, y: 0 }));
+  set(i => (props.isFading ? { config: { duration: 100 }, opacity: 0, y: 50 } : { delay: (i * 200) + 600, opacity: 1, x: 0, y: 0 }));
   const chars = props.text.split('');
   return (
     <SubHeader>
@@ -52,6 +52,7 @@ const SlidingSubheader = props => {
 };
 
 SlidingSubheader.propTypes = {
+  isFading: PropTypes.bool,
   text: PropTypes.string
 };
 

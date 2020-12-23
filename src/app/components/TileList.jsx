@@ -35,14 +35,22 @@ const TileList = props => {
       friction: 80
     }
   }));
-  set(i => ({ delay: (i * 200) + 1800, opacity: 1, y: 0 }));
+  set(i => ({ delay: (i * 200) + 1800, opacity: 1, y: 8 }));
+  const clickEvent = href => {
+    props.setFadeout(true);
+    set(() => ({ opacity: 0, y: 0 }));
+    setTimeout(() => {
+      props.setFadeout(false);
+      props.openForm(href);
+    }, 1000);
+  };
   return (
     <List>
       {springs.map(({ opacity, y }, i) => (
         <ListItem key={i} style={{
           opacity: opacity,
           transform: y.interpolate(y => `translate(0, ${y}px)`)
-        }} onClick={() => props.clickFunc(props.items[i].href)}>
+        }} onClick={() => clickEvent(props.items[i].href)}>
           <LiText>
             {props.items[i].text}
           </LiText>
@@ -53,7 +61,8 @@ const TileList = props => {
 };
 
 TileList.propTypes = {
-  clickFunc: PropTypes.func,
+  openForm: PropTypes.func,
+  setFadeout: PropTypes.func,
   items: PropTypes.array
 };
 
