@@ -5,19 +5,10 @@ import FormContainer from './FormContainer';
 import ListSection from './ListSection';
 import TileList from './TileList';
 import SlidingSubheader from './SlidingSubheader';
-import TextInput from './TextInput';
-
-const genLi = (href, text) => ({ href, text });
-const listItems = [
-  genLi('towers', 'Towers'),
-  genLi('/towers', 'Lions'),
-  genLi('/towers', 'Tigers'),
-  genLi('/towers', 'Bears'),
-  genLi('/towers', 'Oh My')
-];
+import { fsListItems, overlayListItems, animListItems } from '../data/ListItems';
 
 const PerspectivesBody = props => {
-  const [formType, setFormType] = React.useState(null);
+  const [formType, setFormType] = React.useState('');
   const [isFading, setFadeout] = React.useState(false);
   const openForm = href => {
     props.setFormVisible(true);
@@ -25,22 +16,17 @@ const PerspectivesBody = props => {
   };
   if(props.formVisible) {
     return (
-      <React.Fragment>
-        <CascadingHeader isFading={isFading} text="Form Time" />
-        <SlidingSubheader isFading={isFading} text="beefed" />
-        <FormContainer formType={formType} />
-      </React.Fragment>
+      <FormContainer isFading={isFading} formType={formType} />
     );
   }
   return (
     <React.Fragment>
       <CascadingHeader isFading={isFading} text="Perspectives" />
       <SlidingSubheader isFading={isFading} text="by JD" />
-      <TextInput label="colah" />
       <ListSection isFading={isFading}>
-        <TileList openForm={openForm} setFadeout={setFadeout} items={listItems} />
-        <TileList items={listItems} />
-        <TileList items={listItems} />
+        <TileList openForm={openForm} setFadeout={setFadeout} items={fsListItems} />
+        <TileList items={overlayListItems} />
+        <TileList items={animListItems} />
       </ListSection>
     </React.Fragment>
   );

@@ -11,6 +11,7 @@
     "build": "npm run build:server && npm run build:app",
     "start": "node dist/server/server.js",
     "start:perspectives": "webpack serve --mode development --config ./webpack/webpack.config.perspectives.js",
+    "start:room": "webpack serve --mode development --config ./webpack/webpack.config.room.js",
     "start:towers": "webpack serve --mode development --config ./webpack/webpack.config.towers.js",
     "test": "echo \"Hi there\" && exit 1"
   },

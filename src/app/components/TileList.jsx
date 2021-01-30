@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { animated, useSprings } from 'react-spring';
 import styled from 'styled-components';
+import { firstUpper, getSpringConfig } from '../utils';
 
 const List = styled(animated.ul)`
   width: 100%;
@@ -26,16 +27,11 @@ const LiText = styled(animated.span)`
 `;
 
 const TileList = props => {
-  const [springs, set] = useSprings(props.items.length, () => ({
+  const [springs, set] = useSprings(props.items.length, () => getSpringConfig(1, 400, 80, {
     opacity: 0,
-    y: 400,
-    config: {
-      mass: 1,
-      tension: 400,
-      friction: 80
-    }
+    y: 400
   }));
-  set(i => ({ delay: (i * 200) + 1800, opacity: 1, y: 8 }));
+  set(i => ({ delay: (i * 200) + 800, opacity: 1, y: 8 }));
   const clickEvent = href => {
     props.setFadeout(true);
     set(() => ({ opacity: 0, y: 0 }));
@@ -50,9 +46,9 @@ const TileList = props => {
         <ListItem key={i} style={{
           opacity: opacity,
           transform: y.interpolate(y => `translate(0, ${y}px)`)
-        }} onClick={() => clickEvent(props.items[i].href)}>
+        }} onClick={() => clickEvent(props.items[i])}>
           <LiText>
-            {props.items[i].text}
+            {firstUpper(props.items[i])}
           </LiText>
         </ListItem>
       ))}

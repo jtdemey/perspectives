@@ -52,7 +52,10 @@ html, body, main, #site-wrapper, #app-root {
   height: 100%;
 	font-family: 'Xanh Mono', monospace;
   background: #D0CDD7;
-  overflow: hidden;
+}
+#app-root {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 a {
   text-decoration: none;
