@@ -28,7 +28,7 @@ const TextInput = props => {
   const changeFunc = e => setValue(e.target.value);
   const [labelSpring, setLabel] = useSpring(() => getSpringConfig(1, 600, 100, {
     scale: 1.25,
-    x: 8,
+    x: 16,
     y: 20
   }));
   const [inputSpring, setInput] = useSpring(() => getSpringConfig(1, 1200, 60, {

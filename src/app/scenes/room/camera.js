@@ -13,7 +13,8 @@ export const CAM_ANGLES = {
 export const setCameraAngle = angleId => {
   switch(angleId) {
     case CAM_ANGLES.CENTER:
-      camera.position.set(7.5, 6, 40);
+      camera.position.set(4, 10, 20);
+      camera.rotation.y = 0.2;
       break;
     case CAM_ANGLES.SIDE:
       camera.position.set(12, -11.4, 15.3);

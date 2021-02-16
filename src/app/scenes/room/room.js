@@ -1,5 +1,5 @@
 import * as Three from '../../../lib/three.module.js';
-import { addLight } from './light.js';
+import { initLights, updateLights } from './light.js';
 import { updateMeshes, initMeshes } from './meshes.js';
 import camera, { setCameraAngle, updateCamera } from './camera.js';
 
@@ -8,7 +8,6 @@ var scene, renderer;
 const init = () => {
   scene = new Three.Scene();
   scene.background = new Three.Color('#060d14');
-  scene.fog = new Three.FogExp2(new Three.Color('#00394d'), 0.15);
 
   renderer = new Three.WebGLRenderer({antialias: true});
   renderer.physicallyCorrectLights = true;
@@ -22,7 +21,7 @@ const init = () => {
 
   initMeshes(scene);
 
-  addLight(scene, 0xffffff, 10.0, 0, 10, 2);
+  initLights(scene);
 
   play();
 };
@@ -53,6 +52,7 @@ export const stop = () => {
 const update = () => {
   updateCamera(0);
   updateMeshes();
+  updateLights();
 };
 
 init();

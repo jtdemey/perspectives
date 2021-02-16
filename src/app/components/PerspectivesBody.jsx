@@ -25,8 +25,8 @@ const PerspectivesBody = props => {
       <SlidingSubheader isFading={isFading} text="by JD" />
       <ListSection isFading={isFading}>
         <TileList openForm={openForm} setFadeout={setFadeout} items={fsListItems} />
-        <TileList items={overlayListItems} />
-        <TileList items={animListItems} />
+        <TileList openForm={openForm} setFadeout={setFadeout} items={overlayListItems} />
+        <TileList openForm={openForm} setFadeout={setFadeout} items={animListItems} />
       </ListSection>
     </React.Fragment>
   );

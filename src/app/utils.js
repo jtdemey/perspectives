@@ -1,4 +1,8 @@
+const Three = require('../lib/three.module.js');
+
 export const between = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const getHexNum = hex => new Three.Color(hex).getHex();
 
 export const getSpringConfig = (mass, tension, friction, args) => ({ config: { mass, tension, friction}, ...args});
 

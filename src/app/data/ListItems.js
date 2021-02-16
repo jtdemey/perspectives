@@ -6,7 +6,7 @@ export const fsListItems = [
 ];
 
 export const overlayListItems = [
-  'bip',
+  'border',
   'bop',
   'bippity doo',
   'asbestos'
