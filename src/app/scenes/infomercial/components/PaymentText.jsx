@@ -36,7 +36,7 @@ const PriceHeader = styled.h1`
 
 const DollahSign = styled.span`
   grid-row: 1 / 3;
-  padding: 2rem 0 0 6rem;
+  padding: 2rem 0 0 10rem;
   font-size: 6rem;
 `;
 
@@ -46,12 +46,12 @@ const BigNums = styled.span`
 `;
 
 const LittleNums = styled.span`
-  padding: 0.5rem 2rem 0 0;
+  padding: 0.5rem 6rem 0 0;
   font-size: 7rem;
 `;
 
 const PhBlurb = styled.span`
-  padding-right: 1rem;
+  padding-right: 6rem;
   font-size: 2rem;
   color: #fff;
   text-shadow: 1px 5px 3px #111;
@@ -60,6 +60,12 @@ const PhBlurb = styled.span`
 const MoneyBackHeader = styled.h4`
   grid-column: 1 / 3;
   font-size: 3rem;
+  color: #fff;
+  text-shadow: 1px 5px 3px #111;
+`;
+
+const Disclaimer = styled.span`
+  font-size: 1.5rem;
   color: #fff;
   text-shadow: 1px 5px 3px #111;
 `;
@@ -76,7 +82,7 @@ const PaymentText = () => {
           <PhBlurb>Plus CBT</PhBlurb>
         </PriceHeader>
       </PriceContainer>
-      <MoneyBackHeader>40 Minute Money Back<br />Guarantee (same CBT)</MoneyBackHeader>
+      <MoneyBackHeader>40 Minute Money Back<br />Guarantee <Disclaimer>(same CBT)</Disclaimer></MoneyBackHeader>
     </Section>
   );
 };
