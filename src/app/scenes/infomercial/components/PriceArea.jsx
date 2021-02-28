@@ -1,19 +1,20 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import CreditCards from './CreditCards';
 import PaymentText from './PaymentText';
 
-const Section = styled.section`
-
-`;
-
-const PriceArea = () => {
+const PriceArea = props => {
   return (
-    <Section>
+    <section>
       <CreditCards />
-      <PaymentText />
-    </Section>
+      <PaymentText cost={props.cost} payments={props.payments} />
+    </section>
   );
+};
+
+PriceArea.propTypes = {
+  cost: PropTypes.string,
+  payments: PropTypes.string
 };
 
 export default PriceArea;

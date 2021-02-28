@@ -12,7 +12,7 @@ const Text = styled.h6`
   padding: 0.5rem;
   color: #fff;
   font-size: 2rem;
-  text-shadow: 8px 4px #111;
+  text-shadow: 1px 5px 3px #111;
 `;
 
 const AddressBar = () => {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Section = styled.section`
@@ -8,6 +9,7 @@ const Section = styled.section`
   text-align: center;
   font-family: 'Heebo', sans-serif;
   color: #E2A271;
+  overflow: hidden;
 `;
 
 const PaymentHeader = styled.h4`
@@ -15,6 +17,7 @@ const PaymentHeader = styled.h4`
   font-size: 2.5rem;
   padding: 0.25rem;
   text-shadow: 4px 4px 10px #111;
+  overflow: hidden;
 `;
 
 const PaymentCount = styled.span`
@@ -70,21 +73,32 @@ const Disclaimer = styled.span`
   text-shadow: 1px 5px 3px #111;
 `;
 
-const PaymentText = () => {
+const formatPayments = pmt => pmt === '' ? '52' : pmt;
+const formatCost = amt => amt.indexOf && amt.indexOf('.') > -1 ? amt.split('.') : ([amt, '']);
+
+const PaymentText = props => {
+  const costStr = props.cost ? formatCost(props.cost) : (['80', '08']);
+  const paymentStr = formatPayments(props.payments);
+  console.log(props)
   return (
     <Section>
-      <PaymentHeader>Only <PaymentCount>52</PaymentCount> easy payments of</PaymentHeader>
+      <PaymentHeader>Only <PaymentCount>{paymentStr}</PaymentCount> easy payments of</PaymentHeader>
       <PriceContainer>
         <PriceHeader>
           <DollahSign>$</DollahSign>
-          <BigNums>80</BigNums>
-          <LittleNums>08</LittleNums>
+          <BigNums>{costStr[0]}</BigNums>
+          <LittleNums>{costStr[1]}</LittleNums>
           <PhBlurb>Plus CBT</PhBlurb>
         </PriceHeader>
       </PriceContainer>
       <MoneyBackHeader>40 Minute Money Back<br />Guarantee <Disclaimer>(same CBT)</Disclaimer></MoneyBackHeader>
     </Section>
   );
+};
+
+PaymentText.propTypes = {
+  cost: PropTypes.string,
+  payments: PropTypes.string
 };
 
 export default PaymentText;
