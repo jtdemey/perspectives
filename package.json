@@ -11,6 +11,7 @@
     "build": "npm run build:server && npm run build:app",
     "start": "node dist/server/server.js",
     "start:perspectives": "webpack serve --mode development --config ./webpack/webpack.config.perspectives.js",
+    "start:border": "webpack serve --mode development --config ./webpack/webpack.config.border.js",
     "start:infomercial": "webpack serve --mode development --config ./webpack/webpack.config.infomercial.js",
     "start:room": "webpack serve --mode development --config ./webpack/webpack.config.room.js",
     "start:towers": "webpack serve --mode development --config ./webpack/webpack.config.towers.js",

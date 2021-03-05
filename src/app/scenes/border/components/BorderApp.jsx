@@ -10,13 +10,9 @@ const gfi = (name, placeholder) => ({ name, placeholder });
 const formInputs = [
   gfi('payments', 'Payment Amount'),
   gfi('cost', 'Cost'),
-  gfi('moneyback', 'Money Back Guarantee'),
+  gfi('moneyback', 'Money Back Guarantee Time'),
   gfi('website', 'Website Name'),
-  gfi('phone', 'Phone Number'),
-  gfi('preaddress', 'Preaddress'),
-  gfi('addr1', 'Address 1'),
-  gfi('addr2', 'Address 2'),
-  gfi('addr3', 'Address 3')
+  gfi('phone', 'Phone Number')
 ];
 
 const Main = styled.main`
@@ -27,7 +23,7 @@ const Main = styled.main`
   overflow: hidden;
 `;
 
-const boundKeys = [9, 27]; //Tab, esc
+const boundKeys = [27, 32]; //Spacebar, esc
 const handleKey = (e, isVisible, setVisible) => {
   if(boundKeys.some(k => k === e.keyCode)) {
     setVisible(!isVisible);
@@ -40,26 +36,17 @@ const InfomercialApp = () => {
   const [state, setState] = React.useState({
     payments: '',
     cost: '',
-    moneyback: '',
+    money: '',
     website: '',
-    phone: '',
-    preaddress: '',
-    addr1: '',
-    addr2: '',
-    addr3: ''
+    phone: ''
   });
   return (
     <Main tabIndex="0" onKeyDown={keyFunc}>
       <OverlayForm inputs={formInputs} visible={formVisible} config={state} setConfig={setState} />
       <CssBase />
       <VideoDisplay />
-      <PriceArea cost={state.cost} moneyback={state.moneyback} payments={state.payments} />
-      <TextArea addr1={state.addr1}
-                addr2={state.addr2}
-                addr3={state.addr3}
-                phone={state.phone}
-                preaddress={state.preaddress}
-                website={state.website} />
+      <PriceArea cost={state.cost} payments={state.payments} />
+      <TextArea />
     </Main>
   );
 };

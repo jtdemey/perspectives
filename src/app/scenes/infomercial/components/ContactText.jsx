@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AddressBar from './AddressBar';
 
@@ -34,16 +35,25 @@ const Company = styled.h4`
   text-shadow: 8px 4px #111;
 `;
 
-const ContactText = () => {
+const ContactText = props => {
   return (
     <Section>
-      <Website>www.gamerleash.org</Website>
-      <Phone>1-800-IEAT-ASS</Phone>
-      <SendBlurb>Send Check or Small Shiny Rocks:</SendBlurb>
-      <Company><i>BURT & SPURT UTILITIES</i></Company>
-      <AddressBar />
+      <Website>{props.website || 'www.gamerleash.org'}</Website>
+      <Phone>{props.phone || '1-800-IEAT-ASS'}</Phone>
+      <SendBlurb>{props.preaddress || 'Send Check or Small Shiny Rocks:'}</SendBlurb>
+      <Company><i>{props.addr1 || 'BURT & SPURT UTILITIES'}</i></Company>
+      <AddressBar addr2={props.addr2} addr3={props.addr3} />
     </Section>
   );
+};
+
+ContactText.propTypes = {
+  addr1: PropTypes.string,
+  addr2: PropTypes.string,
+  addr3: PropTypes.string,
+  phone: PropTypes.string,
+  preaddress: PropTypes.string,
+  website: PropTypes.string
 };
 
 export default ContactText;

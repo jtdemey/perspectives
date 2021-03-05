@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Section = styled.section`
@@ -15,13 +16,18 @@ const Text = styled.h6`
   text-shadow: 1px 5px 3px #111;
 `;
 
-const AddressBar = () => {
+const AddressBar = props => {
   return (
     <Section>
-      <Text>927 Pahkland Avenue Shoebox 420</Text>
-      <Text>New Joisey, NJ 10011</Text>
+      <Text>{props.addr2 || '927 Pahkland Avenue Shoebox 420'}</Text>
+      <Text>{props.addr3 || 'New Joisey, NJ 10011'}</Text>
     </Section>
   );
+};
+
+AddressBar.propTypes = {
+  addr2: PropTypes.string,
+  addr3: PropTypes.string
 };
 
 export default AddressBar;

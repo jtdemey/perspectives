@@ -7,13 +7,14 @@ const PriceArea = props => {
   return (
     <section>
       <CreditCards />
-      <PaymentText cost={props.cost} payments={props.payments} />
+      <PaymentText cost={props.cost} moneyback={props.moneyback} payments={props.payments} />
     </section>
   );
 };
 
 PriceArea.propTypes = {
   cost: PropTypes.string,
+  moneyback: PropTypes.string,
   payments: PropTypes.string
 };
 

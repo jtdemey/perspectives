@@ -78,8 +78,8 @@ const formatCost = amt => amt.indexOf && amt.indexOf('.') > -1 ? amt.split('.') 
 
 const PaymentText = props => {
   const costStr = props.cost ? formatCost(props.cost) : (['80', '08']);
+  const moneyStr = props.moneyback || '40';
   const paymentStr = formatPayments(props.payments);
-  console.log(props)
   return (
     <Section>
       <PaymentHeader>Only <PaymentCount>{paymentStr}</PaymentCount> easy payments of</PaymentHeader>
@@ -91,13 +91,14 @@ const PaymentText = props => {
           <PhBlurb>Plus CBT</PhBlurb>
         </PriceHeader>
       </PriceContainer>
-      <MoneyBackHeader>40 Minute Money Back<br />Guarantee <Disclaimer>(same CBT)</Disclaimer></MoneyBackHeader>
+      <MoneyBackHeader>{moneyStr} Minute Money Back<br />Guarantee <Disclaimer>(same CBT)</Disclaimer></MoneyBackHeader>
     </Section>
   );
 };
 
 PaymentText.propTypes = {
   cost: PropTypes.string,
+  moneyback: PropTypes.string,
   payments: PropTypes.string
 };
 
