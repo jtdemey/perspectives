@@ -17,7 +17,6 @@ const Input = styled.input`
 const handleChange = (e, confKey, setConfig, setValue) => {
   const result = {};
   result[confKey] = e.target.value;
-  console.log(result)
   setConfig(prev => ({ ...prev, ...result}));
   setValue(e.target.value);
 };
