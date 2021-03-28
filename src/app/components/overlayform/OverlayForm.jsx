@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import FormPetals from './FormPetals';
 import OverlayFormBody from './OverlayFormBody';
 
-const Section = styled(animated.section)`
-  position: absolute;
+const Section = styled(animated.article)`
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

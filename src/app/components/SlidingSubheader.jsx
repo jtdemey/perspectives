@@ -20,7 +20,6 @@ const SubHeader = styled(animated.h2)`
 const Span = styled(animated.span)`
 	display: inline-block;
 	min-width: 1rem;
-	padding: 0 0.1rem;
   @media all and (min-width: 701px) {
     padding: 0 0.25rem;
   }

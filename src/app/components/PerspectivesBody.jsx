@@ -22,7 +22,7 @@ const PerspectivesBody = props => {
   return (
     <React.Fragment>
       <CascadingHeader isFading={isFading} text="Perspectives" />
-      <SlidingSubheader isFading={isFading} text="by JD" />
+      <SlidingSubheader isFading={isFading} text="by John Torsten" />
       <ListSection isFading={isFading}>
         <TileList openForm={openForm} setFadeout={setFadeout} items={fsListItems} />
         <TileList openForm={openForm} setFadeout={setFadeout} items={overlayListItems} />

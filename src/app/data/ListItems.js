@@ -1,15 +1,14 @@
 export const fsListItems = [
   'cube',
   'towers',
-  'pillars',
-  'other'
+  'infomercial',
+  'room'
 ];
 
 export const overlayListItems = [
   'border',
-  'bop',
-  'bippity doo',
-  'asbestos'
+  'swipe transition',
+  'title'
 ];
 
 export const animListItems = [
