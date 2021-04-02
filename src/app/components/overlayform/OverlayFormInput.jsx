@@ -14,6 +14,10 @@ const Input = styled.input`
   height: 2rem;
 `;
 
+const Label = styled.label`
+  color: #f2f2f2;
+`;
+
 const handleChange = (e, confKey, setConfig, setValue) => {
   const result = {};
   result[confKey] = e.target.value;
@@ -26,7 +30,8 @@ const OverlayFormInput = props => {
   const changeFunc = e => handleChange(e, props.name, props.setConfig, setValue);
   return (
     <Container>
-      <Input type="text" name={props.name} placeholder={props.placeholder} onChange={changeFunc} value={value} />
+      <Label for={props.name}>{props.type === 'checkbox' ? props.placeholder : ''}</Label>
+      <Input type={props.type || 'text'} name={props.name} placeholder={props.placeholder} onChange={changeFunc} value={value} />
     </Container>
   );
 };
@@ -35,7 +40,8 @@ OverlayFormInput.propTypes = {
   config: PropTypes.object,
   name: PropTypes.string,
   placeholder: PropTypes.string,
-  setConfig: PropTypes.func
+  setConfig: PropTypes.func,
+  type: PropTypes.string
 };
 
 export default OverlayFormInput;

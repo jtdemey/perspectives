@@ -1,21 +1,29 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import OverlayFormInput from './OverlayFormInput';
 
-const Form = styled.form`
-  display: flex;
-  flex-flow: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 8rem 0 0 4rem;
-  text-align: left;
+const Container = styled.div`
+  font-family: 'Heebo', sans-serif;
+  overflow: hidden;
+  z-index: 4;
+  padding: 1rem 0;
 `;
 
-const OverlayFormBody = props => {
+const CheckboxInput = styled.input`
+  width: 20rem;
+  height: 2rem;
+`;
+
+const TextInput = styled.input`
+  width: 20rem;
+  height: 2rem;
+`;
+
+const Label = styled.label`
+  color: #f2f2f2;
+`;
+
+const OverlayFormCheckbox = props => {
   return (
     <React.Fragment>
       <Form>
@@ -27,11 +35,11 @@ const OverlayFormBody = props => {
   );
 };
 
-OverlayFormBody.propTypes = {
+OverlayFormCheckbox.propTypes = {
   config: PropTypes.object,
   inputs: PropTypes.array,
   setConfig: PropTypes.func,
   visible: PropTypes.bool
 };
 
-export default OverlayFormBody;
+export default OverlayFormCheckbox;
