@@ -9,7 +9,12 @@ const Container = styled.div`
   padding: 1rem 0;
 `;
 
-const Input = styled.input`
+const CheckboxInput = styled.input`
+  width: 20rem;
+  height: 2rem;
+`;
+
+const TextInput = styled.input`
   width: 20rem;
   height: 2rem;
 `;
@@ -30,8 +35,10 @@ const OverlayFormInput = props => {
   const changeFunc = e => handleChange(e, props.name, props.setConfig, setValue);
   return (
     <Container>
-      <Label for={props.name}>{props.type === 'checkbox' ? props.placeholder : ''}</Label>
-      <Input type={props.type || 'text'} name={props.name} placeholder={props.placeholder} onChange={changeFunc} value={value} />
+      <Label htmlFor={props.name}>{props.type === 'checkbox' ? props.placeholder : ''}</Label>
+      {props.type === 'checkbox' ?
+        <CheckboxInput type={props.type} name={props.name} placeholder={props.placeholder} onChange={changeFunc} value={value} />
+        : <TextInput type={props.type} name={props.name} placeholder={props.placeholder} onChange={changeFunc} value={value} />}
     </Container>
   );
 };

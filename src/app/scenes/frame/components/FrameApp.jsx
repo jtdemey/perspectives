@@ -10,11 +10,14 @@ const formInputs = [
   gfi('width', 'Frame width (px)'),
   gfi('height', 'Frame height (px)'),
   gfi('colors', 'Gradient colors (comma-separated hex list)'),
-  gfi('borderwidth', 'Border width (px)'),
   gfi('bordercolor', 'Border color (px)'),
-  gfi('stripeenabled', 'Add stripes', 'checkbox'),
-  gfi('stripeangle', 'Stripe angle (deg)'),
+  gfi('bordertop', 'Top border width (px)'),
+  gfi('borderright', 'Right border width (px)'),
+  gfi('borderbottom', 'Bottom border width (px)'),
+  gfi('borderleft', 'Left border width (px)'),
+  gfi('boxshadowwidth', 'Box shadow width (px)'),
   gfi('stripewidth', 'Stripe width (px)'),
+  gfi('stripeangle', 'Stripe angle (deg)'),
   gfi('stripecolor', 'Stripe color (px)')
 ];
 
@@ -25,7 +28,7 @@ const Main = styled.main`
   overflow: hidden;
 `;
 
-const formKeys = [9, 27]; //Tab, esc
+const formKeys = [27]; //Esc
 const handleKey = (e, isVisible, setVisible) => {
   if(formKeys.some(k => k === e.keyCode)) {
     setVisible(!isVisible);
@@ -35,7 +38,7 @@ const handleKey = (e, isVisible, setVisible) => {
 const parseColors = str => {
   const res = [];
   const add = v => {
-    if(isHex(v)) {
+    if(isHex(v) && v.length === 7) {
       res.push(v);
     }
   };
@@ -58,9 +61,13 @@ const FrameApp = () => {
     height: 450,
     colors: '',
     bordercolor: '',
-    borderwidth: 0,
+    bordertop: 0,
+    borderright: 0,
+    borderbottom: 0,
+    borderleft: 0,
+    boxshadowwidth: 0,
+    stripewidth: 0,
     stripeangle: 45,
-    stripewidth: 18,
     stripecolor: '#809fff'
   });
   return (
@@ -71,10 +78,14 @@ const FrameApp = () => {
                   height={parseInt(state.height)}
                   colors={parseColors(state.colors)}
                   borderColor={state.bordercolor}
-                  borderWidth={parseInt(state.borderwidth)}
-                  stripeangle={parseInt(state.stripeangle)}
-                  stripewidth={parseInt(state.stripewidth)}
-                  stripecolor={state.stripecolor} />
+                  borderTop={parseInt(state.bordertop)}
+                  borderRight={parseInt(state.borderright)}
+                  borderBottom={parseInt(state.borderbottom)}
+                  borderLeft={parseInt(state.borderleft)}
+                  boxShadowWidth={parseInt(state.boxshadowwidth)}
+                  stripeWidth={parseInt(state.stripewidth)}
+                  stripeAngle={parseInt(state.stripeangle)}
+                  stripeColor={state.stripecolor} />
     </Main>
   );
 };

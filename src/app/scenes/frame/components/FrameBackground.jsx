@@ -2,6 +2,8 @@ import * as React from 'react';
 import { animated, useSpring } from 'react-spring';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import FrameStripes from './FrameStripes';
+import { isHex } from '../../../utils';
 
 const Background = styled(animated.section)`
   width: 100%;
@@ -11,28 +13,28 @@ const Background = styled(animated.section)`
   background-size: 200% 200%;
 `;
 
-const getBg = props => {
-  let result = props.colors && props.colors.length > 0 ? `linear-gradient(to right bottom, ${props.colors.join(', ')})`
-    : `linear-gradient(to right bottom, #0099ff, #002e4d)`;
-    console.log(props)
-  if(props.stripeangle || props.stripewidth || props.stripecolor) {
-    console.log('eh');
+const getBgImg = props => {
+  if(!props.colors || props.colors.some(x => !isHex(x) || x.length !== 7)) {
+    return `linear-gradient(to right bottom, #003380, #1a75ff)`;
+  } else if(props.colors.length === 1) {
+    return `linear-gradient(to right bottom, ${props.colors[0]}, ${props.colors[0]})`;
+  } else {
+    return `linear-gradient(to right bottom, ${props.colors.join(', ')})`;
   }
-  return result;
 };
 
 let fadeValue = true;
 
 const FrameBackground = props => {
   const [spring, set] = useSpring(() => ({
-    backgroundImage: getBg(props),
+    backgroundImage: getBgImg(props),
     bgPos: 0,
     config: {
       duration: 5000
     }
   }));
   set(() => ({
-    backgroundImage: getBg(props),
+    backgroundImage: getBgImg(props),
     bgPos: fadeValue ? -(props.width || 800) : 0
   }));
   React.useEffect(() => void setInterval(() => {
@@ -40,7 +42,12 @@ const FrameBackground = props => {
     set(() => ({ bgPos: fadeValue ? -(props.width || 800) : 0, config: { duration: 5000 } }));
   }, 5000), []);
   return (
-    <Background style={{...spring, backgroundPosition: spring.bgPos.interpolate(x => `${x}px ${-(props.height || 450)}px`)}} />
+    <React.Fragment>
+      <Background style={{...spring,
+        backgroundPosition: spring.bgPos.interpolate(x => `${x}px ${-(props.height || 450)}px`)
+      }} />
+      <FrameStripes height={props.height} stripeAngle={props.stripeAngle} stripeWidth={props.stripeWidth} stripeColor={props.stripeColor} />
+    </React.Fragment>
   );
 };
 
@@ -48,9 +55,9 @@ FrameBackground.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   colors: PropTypes.array,
-  stripeangle: PropTypes.number,
-  stripewidth: PropTypes.number,
-  stripecolor: PropTypes.string
+  stripeAngle: PropTypes.number,
+  stripeWidth: PropTypes.number,
+  stripeColor: PropTypes.string
 };
 
 export default FrameBackground;

@@ -18,7 +18,7 @@ const Main = styled.main`
   overflow: hidden;
 `;
 
-const formKeys = [9, 27]; //Tab, esc
+const formKeys = [27]; //Esc
 const animKeys = [32]; //Space
 const handleKey = (e, isVisible, setVisible, animStarting, setAnimState) => {
   if(formKeys.some(k => k === e.keyCode)) {

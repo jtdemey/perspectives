@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { isHex } from '../../../utils';
 
-const defaultColors = ['#00B295', '#191516', '#AB2346'];
+const defaultColors = ['#9FFCDF', '#52AD9C', '#47624F'];
 
 const Section = styled.section`
   width: 100%;
@@ -15,22 +15,24 @@ const Section = styled.section`
 
 const Pane = styled(animated.div)`
   position: fixed;
-  top: 0;
+  top: -25%;
   left: 0;
-  width: 100%;
+  width: 150%;
   height: 200%;
   overflow: hidden;
 `;
 
 const Panes = props => {
+  const leftAnchor = 0 - (0.2 * window.innerWidth);
+  const rightAnchor = window.innerWidth + (0.2 * window.innerWidth);
   const [springs, set] = useSprings(3, i => ({
-    x: window.innerWidth,
-    background: defaultColors[i] 
+    x: rightAnchor,
+    background: defaultColors[i]
   }));
   set(i => ({
     delay: i * 250,
     background: isHex(props.colors[i]) ? props.colors[i] : defaultColors[i],
-    x: props.isAnimated ? 0 : window.innerWidth
+    x: props.isAnimated ? leftAnchor : rightAnchor
   }));
   return (
     <Section>

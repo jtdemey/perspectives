@@ -15,24 +15,32 @@ const Article = styled.article`
 const Frame = styled(animated.section)`
   width: 24rem;
   height: 6rem;
-  border-style: solid;
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 200% 200%;
 `;
 
+const border = (w, props) => `${w}px solid ${props.borderColor || '#001f33'}`
+const shadow = props => `${props.boxShadowWidth || 0}px ${props.boxShadowWidth || 0}px #222`;
+
 const FrameBody = props => {
   const [spring, set] = useSpring(() => ({
     width: props.width || 800,
     height: props.height || 450,
-    borderWidth: props.borderWidth || 0,
-    borderColor: props.borderColor || '#001f33'
+    borderTop: border(props.borderTop, props),
+    borderRight: border(props.borderRight, props),
+    borderBottom: border(props.borderBottom, props),
+    borderLeft: border(props.borderLeft, props),
+    boxShadow: shadow(props)
   }));
   set(() => ({
     width: props.width || 800,
     height: props.height || 450,
-    borderWidth: props.borderWidth || 0,
-    borderColor: props.borderColor || '#001f33'
+    borderTop: border(props.borderTop, props),
+    borderRight: border(props.borderRight, props),
+    borderBottom: border(props.borderBottom, props),
+    borderLeft: border(props.borderLeft, props),
+    boxShadow: shadow(props)
   }));
   return (
     <Article>
@@ -40,9 +48,9 @@ const FrameBody = props => {
         <FrameBackground  width={props.width}
                           height={props.height}
                           colors={props.colors}
-                          stripeangle={props.stripeangle}
-                          stripewidth={props.stripewidth}
-                          stripecolor={props.stripecolor} />
+                          stripeAngle={props.stripeAngle}
+                          stripeWidth={props.stripeWidth}
+                          stripeColor={props.stripeColor} />
       </Frame>
     </Article>
   );
@@ -53,10 +61,14 @@ FrameBody.propTypes = {
   height: PropTypes.number,
   colors: PropTypes.array,
   borderColor: PropTypes.string,
-  borderWidth: PropTypes.number,
-  stripeangle: PropTypes.number,
-  stripewidth: PropTypes.number,
-  stripecolor: PropTypes.string
+  borderTop: PropTypes.number,
+  borderRight: PropTypes.number,
+  borderBottom: PropTypes.number,
+  borderLeft: PropTypes.number,
+  boxShadowWidth: PropTypes.number,
+  stripeAngle: PropTypes.number,
+  stripeWidth: PropTypes.number,
+  stripeColor: PropTypes.string
 };
 
 export default FrameBody;
