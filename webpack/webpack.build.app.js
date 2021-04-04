@@ -4,12 +4,32 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const getJsPath = scene => path.join(process.cwd(), `src/app/scenes/${scene}/${scene}.js`);
+const getJsxPath = scene => getJsPath(scene) + 'x';
+
+const getHtmlPlugin = scene => 
+  new HtmlWebpackPlugin({
+    chunks: [scene],
+    filename: `${scene}.html`,
+    template: `./src/app/scenes/${scene}/${scene}.html`,
+    minify: {
+      collapseWhitespace: false,
+      removeComments: false 
+    }
+  });
+
 module.exports = {
   target: ['web', 'es5'],
   mode: 'production',
   entry: {
     perspectives: path.join(process.cwd(), 'src/app/perspectives.jsx'),
-    towers: path.join(process.cwd(), 'src/app/scenes/towers/towers.js')
+    border: getJsxPath('border'),
+    frame: getJsxPath('frame'),
+    infomercial: getJsxPath('infomercial'),
+    room: getJsPath('room'),
+    swipe: getJsxPath('swipe'),
+    title: getJsxPath('title'),
+    towers: getJsPath('towers') 
   },
   output: {
     path: path.join(process.cwd(), 'dist', 'public'),
@@ -63,15 +83,13 @@ module.exports = {
         removeComments: false 
       }
     }),
-    new HtmlWebpackPlugin({
-      chunks: ['towers'],
-      filename: 'towers.html',
-      template: './src/app/scenes/towers/towers.html',
-      minify: {
-        collapseWhitespace: false,
-        removeComments: false 
-      }
-    }),
+    getHtmlPlugin('border'),
+    getHtmlPlugin('frame'),
+    getHtmlPlugin('infomercial'),
+    getHtmlPlugin('room'),
+    getHtmlPlugin('swipe'),
+    getHtmlPlugin('title'),
+    getHtmlPlugin('towers'),
     new HtmlReplaceWebpackPlugin([
       {
         pattern: /<\s*script[^>]*>(.*?)<\s*\/\s*script>/,
