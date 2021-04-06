@@ -5,13 +5,13 @@ export const fsListItems = [
   'room'
 ];
 
-export const overlayListItems = [
+export const staticListItems = [
   'border',
-  'swipe transition',
+  'frame',
   'title'
 ];
 
-export const animListItems = [
-  'hoot',
-  'holler'
+export const dynamicListItems = [
+  'swipe',
+  'banner'
 ];

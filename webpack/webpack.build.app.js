@@ -83,6 +83,7 @@ module.exports = {
         removeComments: false 
       }
     }),
+    getHtmlPlugin('banner'),
     getHtmlPlugin('border'),
     getHtmlPlugin('frame'),
     getHtmlPlugin('infomercial'),

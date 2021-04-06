@@ -5,7 +5,7 @@ import FormContainer from './FormContainer';
 import ListSection from './ListSection';
 import TileList from './TileList';
 import SlidingSubheader from './SlidingSubheader';
-import { fsListItems, overlayListItems, animListItems } from '../data/ListItems';
+import { fsListItems, staticListItems, dynamicListItems } from '../data/ListItems';
 
 const PerspectivesBody = props => {
   const [formType, setFormType] = React.useState('');
@@ -25,8 +25,8 @@ const PerspectivesBody = props => {
       <SlidingSubheader isFading={isFading} text="by John Torsten" />
       <ListSection isFading={isFading}>
         <TileList openForm={openForm} setFadeout={setFadeout} items={fsListItems} />
-        <TileList openForm={openForm} setFadeout={setFadeout} items={overlayListItems} />
-        <TileList openForm={openForm} setFadeout={setFadeout} items={animListItems} />
+        <TileList openForm={openForm} setFadeout={setFadeout} items={staticListItems} />
+        <TileList openForm={openForm} setFadeout={setFadeout} items={dynamicListItems} />
       </ListSection>
     </React.Fragment>
   );

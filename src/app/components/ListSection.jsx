@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { animated, useSprings } from 'react-spring';
 import styled from 'styled-components';
 
-const SPAN_TEXT = ['Fullscreen', 'Overlays', 'Popups'];
+const SPAN_TEXT = ['Fullscreen', 'Static', 'Dynamic'];
 
 const Section = styled.section`
   display: flex;

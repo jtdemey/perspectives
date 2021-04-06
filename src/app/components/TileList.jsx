@@ -37,7 +37,9 @@ const TileList = props => {
     set(() => ({ opacity: 0, y: 0 }));
     setTimeout(() => {
       props.setFadeout(false);
-      props.openForm(href);
+      //props.openForm(href);
+      console.log(window.location.href);
+      window.location.href += `${href}`;
     }, 1000);
   };
   return (
