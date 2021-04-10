@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import CssBase from '../../../components/CssBase';
 import OverlayForm from '../../../components/overlayform/OverlayForm';
+import BannerContainer from './BannerContainer';
 
 const gfi = (name, placeholder) => ({ name, placeholder });
 const formInputs = [
@@ -9,13 +10,15 @@ const formInputs = [
   gfi('toptext', 'Top Text (hex)'),
   gfi('maintext', 'Main Text (px)'),
   gfi('maincolor', 'Main Color (px)'),
+  gfi('bottomcolor', 'Bottom Color (px)'),
   gfi('scrolltext', 'Scrolling Text (px)')
 ];
 
 const Main = styled.main`
+  position: relative;
   width: 100%;
   height: 100%;
-  background: #eee;
+  background: #00ff00;
   overflow: hidden;
 `;
 
@@ -31,20 +34,22 @@ const BannerApp = () => {
   const keyFunc = e => handleKey(e, formVisible, setFormVisible);
   const [state, setState] = React.useState({
     topcolor: '',
-    toptext: 0,
+    toptext: '',
     maintext: '',
-    maincolor: 80,
-    scrolltext: 80
+    maincolor: '',
+    bottomcolor: '',
+    scrolltext: '' 
   });
   return (
     <Main tabIndex="0" onKeyDown={keyFunc}>
       <OverlayForm inputs={formInputs} visible={formVisible} config={state} setConfig={setState} />
       <CssBase />
       <BannerContainer  topcolor={state.topcolor}
-                        toptext={parseInt(state.toptext)}
+                        toptext={state.toptext}
                         maintext={state.maintext}
-                        maincolor={parseInt(state.maincolor)}
-                        scrolltext={parseInt(state.scrolltext)} />
+                        maincolor={state.maincolor}
+                        bottomcolor={state.bottomcolor}
+                        scrolltext={state.scrolltext} />
     </Main>
   );
 };
