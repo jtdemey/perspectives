@@ -13,6 +13,7 @@
     "start:perspectives": "webpack serve --mode development --config ./webpack/webpack.config.perspectives.js",
     "start:banner": "webpack serve --mode development --config ./webpack/webpack.config.banner.js",
     "start:border": "webpack serve --mode development --config ./webpack/webpack.config.border.js",
+    "start:corner": "webpack serve --mode development --config ./webpack/webpack.config.corner.js",
     "start:frame": "webpack serve --mode development --config ./webpack/webpack.config.frame.js",
     "start:infomercial": "webpack serve --mode development --config ./webpack/webpack.config.infomercial.js",
     "start:room": "webpack serve --mode development --config ./webpack/webpack.config.room.js",

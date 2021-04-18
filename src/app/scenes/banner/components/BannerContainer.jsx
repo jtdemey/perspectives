@@ -11,6 +11,7 @@ const Article = styled.article`
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 100%;
+  font-family: 'Work Sans', sans-serif;
 `;
 
 const BannerContainer = props => {

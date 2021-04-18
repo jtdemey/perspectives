@@ -85,6 +85,7 @@ module.exports = {
     }),
     getHtmlPlugin('banner'),
     getHtmlPlugin('border'),
+    getHtmlPlugin('corner'),
     getHtmlPlugin('frame'),
     getHtmlPlugin('infomercial'),
     getHtmlPlugin('room'),

@@ -1,14 +1,9 @@
 import * as Three from '../../../lib/three.module.js';
 import { initLights, updateLights } from './light.js';
-import { updateMeshes, initMeshes, addText, initText, initTiles } from './meshes.js';
-import camera, { setCameraAngle, updateCamera, CAM_ANGLES } from './camera.js';
+import { updateMeshes, initMeshes } from './meshes.js';
+import camera, { setCameraAngle, updateCamera } from './camera.js';
 
 var scene, renderer;
-
-const config = {
-  wallText: true,
-  wallTiles: true
-};
 
 const init = () => {
   scene = new Three.Scene();
@@ -22,17 +17,9 @@ const init = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.querySelector('#site-wrapper').appendChild(renderer.domElement);
 
-  setCameraAngle(CAM_ANGLES.CORNER);
+  setCameraAngle(0);
 
   initMeshes(scene);
-
-  if(config.wallText) {
-    initText(scene);
-  }
-
-  if(config.wallTiles) {
-    initTiles(scene);
-  }
 
   initLights(scene);
 

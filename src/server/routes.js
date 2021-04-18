@@ -10,6 +10,7 @@ const scenes = [
   'perspectives',
   'banner',
   'border',
+  'corner',
   'frame',
   'infomercial',
   'room',

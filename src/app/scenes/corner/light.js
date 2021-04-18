@@ -39,9 +39,9 @@ const addLightBulb = (scene, color, intensity, x, y, z) => {
 };
 
 export const initLights = scene => {
-  addAmbientLight(scene, getHexNum('#ccffff'), 0.05);
+  addAmbientLight(scene, getHexNum('#ccffff'), 0.1);
   // addDirectionalLight(scene, 0xffffff, 1, 0, 8, 4);
-  addLightBulb(scene, getHexNum('#e6ffff'), 50, 0, 8, 8);
+  addLightBulb(scene, getHexNum('#e6ffff'), 50, 0, 8, 2);
   console.log(lights);
 };
 

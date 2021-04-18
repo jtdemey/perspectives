@@ -22,11 +22,12 @@ const TopBanner = props => {
       friction: 60 
     }
   }));
-  set(() => ({ left: -100 }));
+  set(() => ({ left: 0 }));
   return (
     <Banner style={{
       transform: spring.left.interpolate(x => `translateX(${x}px) skewX(35deg)`)
     }}>
+      <h4 style={{transform: 'skewX(-35deg)'}}>SPROINK DDDDD</h4>
     </Banner>
   );
 };

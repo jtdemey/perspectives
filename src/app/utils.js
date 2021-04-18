@@ -8,6 +8,8 @@ export const easeOutCirc = x => (Math.sqrt(1 - Math.pow(x - 1, 2)));
 
 export const firstUpper = str => str && str.length > 1 ? str[0].toUpperCase() + str.substring(1, str.length) : '';
 
+export const getDegree = deg => deg * (Math.PI / 180);
+
 export const getHexNum = hex => new Three.Color(hex).getHex();
 
 export const getSpringConfig = (mass, tension, friction, args) => ({ config: { mass, tension, friction}, ...args});

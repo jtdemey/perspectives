@@ -6,8 +6,8 @@ export default camera;
 
 export const CAM_ANGLES = {
   CENTER: 0,
-  SIDE: 1,
-  WORM: 2
+  WALL: 1,
+  CORNER: 2
 };
 
 export const setCameraAngle = angleId => {
@@ -16,17 +16,13 @@ export const setCameraAngle = angleId => {
       camera.position.set(4, 10, 20);
       camera.rotation.y = 0.2;
       break;
-    case CAM_ANGLES.SIDE:
-      camera.position.set(12, -11.4, 15.3);
-      camera.rotation.x = 0.5;
-      camera.rotation.y = 0.35;
-      camera.rotation.z = 0.35;
+    case CAM_ANGLES.WALL:
+      camera.position.set(5, 9, 5);
+      camera.rotation.y = 0.2;
       break;
-    case CAM_ANGLES.WORM:
-      camera.position.set(12.5, -9, 16);
-      camera.rotation.x = 0.3;
-      camera.rotation.y = 0.5;
-      camera.rotation.z = 0.5;
+    case CAM_ANGLES.CORNER:
+      camera.position.set(-1, 9, -1);
+      camera.rotation.y = 0.8;
       break;
   }
 };
