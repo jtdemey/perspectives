@@ -1,11 +1,15 @@
 import * as Three from '../../../lib/three.module.js';
 import { initLights, updateLights } from './light.js';
-import { updateMeshes, initMeshes, addText, initText, initTiles } from './meshes.js';
+import { updateMeshes, initMeshes,  } from './meshes.js';
 import camera, { setCameraAngle, updateCamera, CAM_ANGLES } from './camera.js';
+import { onMouseMove, updateMouseIntersects } from './mouse';
+import { initText } from './text';
+import { initTiles } from './tiles.js';
 
 var scene, renderer;
 
 const config = {
+  cameraAngle: CAM_ANGLES.CORNER,
   wallText: true,
   wallTiles: true
 };
@@ -18,11 +22,13 @@ const init = () => {
   renderer.physicallyCorrectLights = true;
   renderer.outputEncoding = Three.sRGBEncoding;
   renderer.shadowMap.enabled = true;
+  console.log(renderer.shadowMap)
+  renderer.shadowMap.type = 1;
   renderer.toneMapping = Three.ReinhardToneMapping;
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.querySelector('#site-wrapper').appendChild(renderer.domElement);
 
-  setCameraAngle(CAM_ANGLES.CORNER);
+  setCameraAngle(config.cameraAngle);
 
   initMeshes(scene);
 
@@ -35,6 +41,8 @@ const init = () => {
   }
 
   initLights(scene);
+
+  document.addEventListener('mousemove', e => onMouseMove(e));
 
   play();
 };
@@ -53,9 +61,7 @@ const play = () => {
   });
 };
 
-const render = () => {
-  renderer.render(scene, camera);
-};
+const render = () => renderer.render(scene, camera);
 
 export const stop = () => {
   renderer.setAnimationLoop(null);
@@ -63,9 +69,10 @@ export const stop = () => {
 };
 
 const update = () => {
-  updateCamera(0);
+  updateCamera(config.cameraAngle);
   updateMeshes();
   updateLights();
+  updateMouseIntersects(); 
 };
 
 init();

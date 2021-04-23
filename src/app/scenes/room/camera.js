@@ -27,8 +27,17 @@ export const setCameraAngle = angleId => {
   }
 };
 
+const startPos = new Three.Vector3(2, 11, 2);
+const destPos = new Three.Vector3(-1, 9, -1);
+
 export const updateCamera = angleId => {
   switch(angleId) {
+    case CAM_ANGLES.CORNER:
+      if(startPos.z > -0.999) {
+        startPos.lerp(destPos, 0.05);
+        camera.position.copy(startPos);
+      }
+      break;
     default:
       break;
   }

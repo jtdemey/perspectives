@@ -3,7 +3,6 @@ import { getHexNum } from '../../utils.js';
 const Three = require('../../../lib/three.module.js');
 
 const lights = [];
-
 export default lights;
 
 const sphereGeom = new Three.SphereGeometry(0.5, 16, 8);
@@ -41,8 +40,7 @@ const addLightBulb = (scene, color, intensity, x, y, z) => {
 export const initLights = scene => {
   addAmbientLight(scene, getHexNum('#ccffff'), 0.05);
   // addDirectionalLight(scene, 0xffffff, 1, 0, 8, 4);
-  addLightBulb(scene, getHexNum('#e6ffff'), 50, 0, 8, 8);
-  console.log(lights);
+  addLightBulb(scene, getHexNum('#e6ffff'), 50, -4, 8, 4);
 };
 
 export const updateLights = () => {
