@@ -14,7 +14,9 @@ const scenes = [
   'frame',
   'infomercial',
   'room',
+  'scorecards',
   'swipe',
+  'textphaser',
   'title',
   'towers'
 ];

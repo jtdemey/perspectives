@@ -17,7 +17,9 @@
     "start:frame": "webpack serve --mode development --config ./webpack/webpack.config.frame.js",
     "start:infomercial": "webpack serve --mode development --config ./webpack/webpack.config.infomercial.js",
     "start:room": "webpack serve --mode development --config ./webpack/webpack.config.room.js",
+    "start:scorecards": "webpack serve --mode development --config ./webpack/webpack.config.scorecards.js",
     "start:swipe": "webpack serve --mode development --config ./webpack/webpack.config.swipe.js",
+    "start:textphaser": "webpack serve --mode development --config ./webpack/webpack.config.textphaser.js",
     "start:title": "webpack serve --mode development --config ./webpack/webpack.config.title.js",
     "start:towers": "webpack serve --mode development --config ./webpack/webpack.config.towers.js",
     "test": "echo \"Hi there\" && exit 1"
